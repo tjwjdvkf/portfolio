@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.sjh.mappers.signup">
+
+	<insert id="insert">
+		INSERT INTO cpmember(
+			cpid,
+			cppwd,
+			cpname,
+			cpnum,
+			cpcallnum,
+			companyaddr1,
+			companyaddr2,
+			companyaddr3
+		)values(
+			#{cpid},
+			#{cppwd},
+			#{cpname},
+			#{cpnum},
+			#{cpcallnum},
+			#{companyaddr1},
+			#{companyaddr2},
+			#{companyaddr3}
+		)
+		
+	</insert>
+	
+	<select id="loginch" resultType="Integer">
+		select count(cpid)
+		from cpmember
+		where cpid =#{cpid}
+				
+			
+	
+	</select>
+	
+	<select id="loginpwdch" resultType="String">
+		select 
+			cppwd from cpmember
+		where
+			cpid = #{cpid}
+	</select>
+	
+	<select id="myinfolist" resultType="com.sjh.vo.SignupVO">
+		select * from cpmember
+		where
+			cpid = #{cpid}
+	</select>
+	
+
+</mapper>
+
